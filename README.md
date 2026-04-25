@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Decision Validate
 
-## Getting Started
+3-ICP 의사결정 회고 페인 강도 검증용 페이크도어 랜딩 페이지.
 
-First, run the development server:
+## 라우트
+
+- `/` — 3개 카테고리 허브
+- `/devs` — 개발자/빌더
+- `/love` — 연애
+- `/life` — 일반 라이프 결정
+
+## 로컬 셋업
 
 ```bash
+git clone https://github.com/hyunn522/Retrospect_Helper.git decision-validate
+cd decision-validate
+npm install
+cp .env.local.example .env.local   # 값 채우기
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 외부 서비스 셋업
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Supabase**: 새 프로젝트 → SQL Editor에서 `supabase/schema.sql` 실행 → URL/anon/service role 키 복사
+2. **Resend**: 계정 생성 → API 키 발급 (무료 도메인 `onboarding@resend.dev` 사용)
+3. **PostHog**: 프로젝트 생성 → API 키 + Host 복사
+4. **Cron Secret**: 임의 문자열 (예: `openssl rand -hex 32`)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 배포 (Vercel)
 
-## Learn More
+```bash
+vercel link
+vercel env add ...   # 모든 환경 변수
+vercel --prod
+```
 
-To learn more about Next.js, take a look at the following resources:
+또는 GitHub repo 연동 후 Vercel Dashboard에서 환경 변수 입력.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 검증 지표 보기
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Vercel Analytics**: path별 방문 수
+- **PostHog**: `landing_view → form_focus → form_submit_try → form_submit_success` 깔때기
+- **Supabase**: `select category, count(*) from submissions group by category`
+- **Resend**: 발송 로그
 
-## Deploy on Vercel
+## 테스트
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm test
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 빌드
+
+```bash
+npm run build
+```
+
+## 디렉터리 구조
+
+```
+app/                     Next.js App Router 페이지·라우트
+  api/submit/            POST 결정 입력
+  api/cron/remind/       매일 KST 09:00 회고 메일 발송
+  api/stats/count/       카테고리별 카운트 (SocialProof용)
+  api/track/click/       회고 메일 링크 클릭 트래킹
+  devs/love/life/        3개 ICP 랜딩
+  thanks/                회고 메일 클릭 후 도착지
+components/              공유 React 컴포넌트
+content/                 ICP별 카피 데이터
+lib/                     env, types, validation, supabase, resend, analytics
+supabase/schema.sql      DB 스키마 (수동 실행)
+tests/                   Vitest 단위·통합 테스트
+docs/superpowers/        spec + plan
+vercel.json              Cron 스케줄
+```
