@@ -58,7 +58,7 @@ RESEND_API_KEY=...
 NEXT_PUBLIC_POSTHOG_KEY=...
 NEXT_PUBLIC_POSTHOG_HOST=https://app.posthog.com
 CRON_SECRET=...                                     # 이미 자동 생성됨
-NEXT_PUBLIC_SITE_URL=https://decision-validate.vercel.app   # Vercel 배포 후 실제 URL로 교체
+NEXT_PUBLIC_SITE_URL=https://retrospect-archive.vercel.app   # Vercel 배포 후 실제 URL로 교체
 ```
 
 ---
@@ -107,7 +107,7 @@ npx vercel link
 **Vercel Dashboard → Project → Settings → Environment Variables**:
 
 - `.env.local`의 모든 7개 키 입력
-- `NEXT_PUBLIC_SITE_URL`은 Vercel 발급 URL로 교체 (예: `https://retrospect-helper.vercel.app`)
+- `NEXT_PUBLIC_SITE_URL`은 Vercel 발급 URL로 교체 (예: `https://retrospect-archive.vercel.app`)
 - 적용 환경: **Production / Preview / Development** 모두 체크
 
 ### 첫 배포

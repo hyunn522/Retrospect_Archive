@@ -140,7 +140,7 @@ NEXT_PUBLIC_POSTHOG_HOST=https://app.posthog.com
 CRON_SECRET=
 
 # 사이트 URL (이메일 링크에 사용)
-NEXT_PUBLIC_SITE_URL=https://decision-validate.vercel.app
+NEXT_PUBLIC_SITE_URL=https://retrospect-archive.vercel.app
 ```
 
 - [ ] **Step 2: 실패하는 테스트 작성**
@@ -1883,7 +1883,7 @@ npx vercel --prod
 
 - [ ] **Step 4: 도메인 확인**
 
-배포 URL (예: `decision-validate.vercel.app`)을 `NEXT_PUBLIC_SITE_URL`에 다시 반영하고 재배포.
+배포 URL (예: `retrospect-archive.vercel.app`)을 `NEXT_PUBLIC_SITE_URL`에 다시 반영하고 재배포.
 
 - [ ] **Step 5: Cron 활성화 확인**
 
