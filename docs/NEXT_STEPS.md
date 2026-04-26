@@ -100,7 +100,7 @@ npm run dev
 ```bash
 npx vercel link
 ```
-- 새 프로젝트 또는 기존 선택 → GitHub repo `Retrospect_Helper` 연결
+- 새 프로젝트 또는 기존 선택 → GitHub repo `Retrospect_Archive` 연결
 
 ### 환경변수 입력
 

@@ -12,7 +12,7 @@
 ## 로컬 셋업
 
 ```bash
-git clone https://github.com/hyunn522/Retrospect_Helper.git decision-validate
+git clone https://github.com/hyunn522/Retrospect_Archive.git decision-validate
 cd decision-validate
 npm install
 cp .env.local.example .env.local   # 값 채우기
