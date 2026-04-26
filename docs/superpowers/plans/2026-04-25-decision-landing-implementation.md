@@ -1,4 +1,4 @@
-# Decision Validate — 3-ICP 랜딩 페이지 구현 계획
+# 회고 아카이브 — 3-ICP 랜딩 페이지 구현 계획
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 >
@@ -540,12 +540,12 @@ export function buildReminderEmail(args: BuildArgs): BuiltEmail {
   <blockquote style="border-left:3px solid #d4d4d8;margin:0 0 24px;padding:8px 12px;color:#52525b;">${escapeHtml(args.decision)}</blockquote>
   <p style="margin:0 0 24px;line-height:1.6;">잘 됐든, 후회되든, 30초만 적어두시면 다음 회고 때 큰 도움이 됩니다.</p>
   <p><a href="${trackUrl}" style="display:inline-block;background:#111;color:#fff;padding:10px 16px;text-decoration:none;border-radius:6px;">회고 한 줄 남기기 →</a></p>
-  <p style="margin-top:32px;font-size:12px;color:#a1a1aa;">— Decision Validate</p>
+  <p style="margin-top:32px;font-size:12px;color:#a1a1aa;">— 회고 아카이브</p>
 </body>
 </html>`.trim();
   return {
     to: args.to,
-    from: 'Decision Validate <onboarding@resend.dev>',
+    from: '회고 아카이브 <onboarding@resend.dev>',
     subject: SUBJECT,
     html,
   };
@@ -1564,7 +1564,7 @@ import { PostHogProvider } from '@/components/PostHogProvider';
 import { Analytics } from '@vercel/analytics/react';
 
 export const metadata = {
-  title: 'Decision Validate',
+  title: '회고 아카이브',
   description: '결정의 맥락을 기록하고 1주일 뒤 회고하세요.',
 };
 
@@ -1638,7 +1638,7 @@ import { LandingShell } from '@/components/LandingShell';
 import { devs } from '@/content/devs';
 
 export const metadata = {
-  title: '개발자를 위한 의사결정 아카이브',
+  title: '개발자를 위한 회고 아카이브',
   description: '6개월 전 그 기술 결정의 이유, 지금 기억나세요?',
 };
 
@@ -1672,7 +1672,7 @@ import { LandingShell } from '@/components/LandingShell';
 import { life } from '@/content/life';
 
 export const metadata = {
-  title: '라이프 결정 아카이브',
+  title: '라이프 회고 아카이브',
   description: '이직, 자취, 큰 소비. 결정의 맥락을 1주일 뒤 다시 만나요.',
 };
 
@@ -1706,7 +1706,7 @@ export default function HomePage() {
   return (
     <main className="min-h-screen flex flex-col items-center justify-center px-6 py-16">
       <h1 className="text-3xl sm:text-4xl font-bold mb-4 text-center">
-        Decision Validate
+        회고 아카이브
       </h1>
       <p className="text-zinc-600 mb-12 text-center max-w-[480px]">
         결정의 맥락은 1주일이면 흐려집니다. 한 줄 적어두면 그때 마음이 다시 돌아와요.
@@ -1767,7 +1767,7 @@ UTC 00:00 = KST 09:00.
 
 `README.md`:
 ````markdown
-# Decision Validate
+# 회고 아카이브
 
 3-ICP 의사결정 회고 페인 강도 검증용 페이크도어 랜딩 페이지.
 

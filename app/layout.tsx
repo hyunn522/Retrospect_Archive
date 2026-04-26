@@ -3,7 +3,7 @@ import { PostHogProvider } from '@/components/PostHogProvider';
 import { Analytics } from '@vercel/analytics/react';
 
 export const metadata = {
-  title: 'Decision Validate',
+  title: '회고 아카이브',
   description: '결정의 맥락을 기록하고 1주일 뒤 회고하세요.',
 };
 

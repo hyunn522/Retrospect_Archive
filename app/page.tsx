@@ -10,7 +10,7 @@ export default function HomePage() {
   return (
     <main className="min-h-screen flex flex-col items-center justify-center px-6 py-16">
       <h1 className="text-3xl sm:text-4xl font-bold mb-4 text-center">
-        Decision Validate
+        회고 아카이브
       </h1>
       <p className="text-zinc-600 mb-12 text-center max-w-[480px]">
         결정의 맥락은 1주일이면 흐려집니다. 한 줄 적어두면 그때 마음이 다시 돌아와요.

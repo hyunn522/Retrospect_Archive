@@ -42,12 +42,12 @@ export function buildReminderEmail(args: BuildArgs): BuiltEmail {
   <blockquote style="border-left:3px solid #d4d4d8;margin:0 0 24px;padding:8px 12px;color:#52525b;">${escapeHtml(args.decision)}</blockquote>
   <p style="margin:0 0 24px;line-height:1.6;">잘 됐든, 후회되든, 30초만 적어두시면 다음 회고 때 큰 도움이 됩니다.</p>
   <p><a href="${trackUrl}" style="display:inline-block;background:#111;color:#fff;padding:10px 16px;text-decoration:none;border-radius:6px;">회고 한 줄 남기기 →</a></p>
-  <p style="margin-top:32px;font-size:12px;color:#a1a1aa;">— Decision Validate</p>
+  <p style="margin-top:32px;font-size:12px;color:#a1a1aa;">— 회고 아카이브</p>
 </body>
 </html>`.trim();
   return {
     to: args.to,
-    from: 'Decision Validate <onboarding@resend.dev>',
+    from: '회고 아카이브 <onboarding@resend.dev>',
     subject: SUBJECT,
     html,
   };
