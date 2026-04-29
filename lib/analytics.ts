@@ -5,6 +5,7 @@ import type { Category } from '@/lib/types';
 
 export type AnalyticsEvent =
   | 'landing_view'
+  | 'category_select'
   | 'form_focus'
   | 'form_submit_try'
   | 'form_submit_success'
@@ -13,7 +14,7 @@ export type AnalyticsEvent =
 
 export function track(
   event: AnalyticsEvent,
-  props: { category: Category; [key: string]: unknown }
+  props: { category?: Category; [key: string]: unknown } = {}
 ): void {
   if (typeof window === 'undefined') return;
   posthog.capture(event, props);
