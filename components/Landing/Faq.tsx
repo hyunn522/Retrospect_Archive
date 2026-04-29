@@ -43,7 +43,7 @@ export function Faq() {
           {faqs.map((f, i) => (
             <details
               key={i}
-              className="group py-4 sm:py-5"
+              className="faq-row group py-4 sm:py-5 px-3 -mx-3 rounded"
               style={{
                 borderTop: i === 0 ? '1px solid var(--color-border-hairline)' : 'none',
                 borderBottom: '1px solid var(--color-border-hairline)',
@@ -55,12 +55,10 @@ export function Faq() {
                 </span>
                 <span
                   aria-hidden
-                  className="shrink-0 mt-0.5 w-8 h-8 grid place-items-center text-[var(--color-text-primary)] group-open:bg-[var(--color-surface-inverse)] group-open:text-[var(--color-text-inverse)] group-open:rotate-45"
+                  className="faq-icon shrink-0 mt-0.5 w-8 h-8 grid place-items-center text-[var(--color-text-primary)] group-open:is-open group-open:bg-[var(--color-surface-inverse)] group-open:text-[var(--color-text-inverse)] group-open:rotate-45"
                   style={{
                     border: '1px solid var(--color-border-on-light)',
                     borderRadius: 'var(--radius-pill)',
-                    transition:
-                      'background-color 200ms ease, color 200ms ease, transform 200ms ease',
                   }}
                 >
                   <PlusIcon size={14} />

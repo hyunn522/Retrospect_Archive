@@ -103,7 +103,7 @@ export function CategoryForm({ initialCategory }: { initialCategory: Category | 
                 tabIndex={focusableIdx === idx ? 0 : -1}
                 onClick={() => handleSelect(cat)}
                 onKeyDown={(e) => handleKeyDown(e, idx)}
-                className="group text-left p-4 sm:p-6 hover:-translate-y-0.5"
+                className="card-pickable group text-left p-4 sm:p-6"
                 style={{
                   background: isSelected
                     ? 'var(--color-surface-inverse)'
@@ -117,8 +117,6 @@ export function CategoryForm({ initialCategory }: { initialCategory: Category | 
                   borderRadius: 'var(--radius-sm)',
                   backdropFilter: 'blur(10px)',
                   WebkitBackdropFilter: 'blur(10px)',
-                  transition:
-                    'transform 150ms ease, background-color 150ms ease, color 150ms ease, border-color 150ms ease',
                 }}
               >
                 <div className="flex items-center justify-between mb-5 sm:mb-7">

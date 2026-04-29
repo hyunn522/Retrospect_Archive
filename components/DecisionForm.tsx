@@ -78,11 +78,6 @@ export function DecisionForm({ content, onSuccess }: Props) {
     }
   }
 
-  const fieldStyle: React.CSSProperties = {
-    border: '1px solid var(--color-border-on-light)',
-    borderRadius: 'var(--radius-sm)',
-  };
-
   return (
     <form
       onSubmit={onSubmit}
@@ -112,8 +107,7 @@ export function DecisionForm({ content, onSuccess }: Props) {
           autoComplete="email"
           inputMode="email"
           spellCheck={false}
-          className="w-full px-4 h-12 text-[15px] text-[var(--color-text-primary)] placeholder:text-[var(--color-text-secondary)]/60 outline-none bg-white"
-          style={fieldStyle}
+          className="field px-4 h-12 text-[15px] text-[var(--color-text-primary)] placeholder:text-[var(--color-text-secondary)]/60"
         />
       </div>
 
@@ -139,8 +133,7 @@ export function DecisionForm({ content, onSuccess }: Props) {
           rows={5}
           maxLength={500}
           autoComplete="off"
-          className="w-full px-4 py-3 text-[15px] leading-[1.55] text-[var(--color-text-primary)] placeholder:text-[var(--color-text-secondary)]/60 outline-none resize-none bg-white"
-          style={fieldStyle}
+          className="field px-4 py-3 text-[15px] leading-[1.55] text-[var(--color-text-primary)] placeholder:text-[var(--color-text-secondary)]/60 resize-none"
         />
         <span aria-live="polite" className="self-end t-caption-sm tnum">
           {decisionLength}/500자 · 최소 10자

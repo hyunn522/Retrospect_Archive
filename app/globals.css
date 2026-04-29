@@ -223,10 +223,20 @@
     font-size: 1.0625rem;
     font-weight: 700;
     line-height: 1;
-    transition: filter 150ms ease, transform 150ms ease;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+    transition: filter 150ms ease, transform 150ms ease,
+                box-shadow 150ms ease;
   }
-  .btn-primary:hover { filter: brightness(0.93); }
-  .btn-primary:active { transform: translateY(1px); }
+  .btn-primary:hover:not(:disabled) {
+    filter: brightness(0.93);
+    transform: translateY(-1px);
+    box-shadow: 0 10px 22px -10px rgba(7, 181, 59, 0.55),
+                0 1px 0 rgba(0, 0, 0, 0.06);
+  }
+  .btn-primary:active:not(:disabled) {
+    transform: translateY(0);
+    filter: brightness(0.88);
+  }
   .btn-primary:disabled {
     background: var(--color-border-on-light);
     border-color: transparent;
@@ -249,12 +259,70 @@
     font-weight: 700;
     line-height: 1;
     transition: background-color 150ms ease, color 150ms ease,
-                border-color 150ms ease;
+                border-color 150ms ease, transform 150ms ease;
   }
   .btn-ghost:hover {
     color: var(--color-text-primary);
     border-color: var(--color-text-primary);
+    background-color: rgba(30, 30, 30, 0.04);
+    transform: translateY(-1px);
   }
+  .btn-ghost:active { transform: translateY(0); }
+
+  /* === Form fields with hover/focus === */
+  .field {
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid var(--color-border-on-light);
+    border-radius: var(--radius-sm);
+    transition: border-color 150ms ease, box-shadow 150ms ease;
+  }
+  .field:hover:not(:focus) {
+    border-color: rgba(30, 30, 30, 0.4);
+  }
+  .field:focus {
+    border-color: var(--color-text-primary);
+    box-shadow: 0 0 0 3px rgba(7, 181, 59, 0.14);
+    outline: none;
+  }
+
+  /* === Pickable card (category radio buttons, unselected state) === */
+  .card-pickable {
+    cursor: pointer;
+    transition: transform 150ms ease, background-color 150ms ease,
+                border-color 150ms ease, box-shadow 150ms ease;
+  }
+  .card-pickable:hover {
+    transform: translateY(-2px);
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    border-color: rgba(30, 30, 30, 0.35) !important;
+    box-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.12);
+  }
+  .card-pickable:active { transform: translateY(0); }
+
+  /* Selected state still gets a subtle hover lift */
+  .card-pickable[aria-checked="true"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.35);
+    background-color: var(--color-surface-inverse) !important;
+    border-color: var(--color-surface-inverse) !important;
+  }
+
+  /* === FAQ row hover === */
+  .faq-row { transition: background-color 150ms ease; }
+  .faq-row:hover { background-color: rgba(30, 30, 30, 0.025); }
+  .faq-icon { transition: background-color 200ms ease, color 200ms ease,
+                          transform 200ms ease, border-color 200ms ease; }
+  .faq-row:hover .faq-icon:not(.is-open) {
+    background-color: rgba(30, 30, 30, 0.06);
+    border-color: rgba(30, 30, 30, 0.4);
+  }
+
+  /* === Generic link hover === */
+  .link-hover {
+    transition: color 150ms ease, opacity 150ms ease;
+  }
+  .link-hover:hover { color: var(--color-text-primary); }
 
   /* === Atmospheric backgrounds (achromatic + brand-green wash only) === */
   .bg-dotgrid {
