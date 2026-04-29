@@ -93,20 +93,6 @@
     }
   }
 
-  /* Skip link */
-  .skip-link {
-    position: fixed;
-    top: -40px;
-    left: 12px;
-    z-index: 100;
-    padding: 10px 16px;
-    background: var(--color-surface-inverse);
-    color: var(--color-text-inverse);
-    border-radius: var(--radius-sm);
-    font-weight: 700;
-    transition: top 150ms ease;
-  }
-  .skip-link:focus { top: 12px; }
 }
 
 @layer utilities {

@@ -19,7 +19,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="" />
       </head>
       <body>
-        <a href="#main" className="skip-link">본문으로 건너뛰기</a>
         <PostHogProvider>{children}</PostHogProvider>
         <Analytics />
       </body>
