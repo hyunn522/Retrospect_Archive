@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 import { track } from '@/lib/analytics';
 import type { Category } from '@/lib/types';
+import { CheckIcon, ClockIcon, MailIcon } from '@/components/Landing/Icons';
 
 interface Props {
   open: boolean;
@@ -11,6 +12,12 @@ interface Props {
   email: string;
   category: Category;
 }
+
+const dateFormatter = new Intl.DateTimeFormat('ko-KR', {
+  dateStyle: 'long',
+  timeStyle: 'short',
+  timeZone: 'Asia/Seoul',
+});
 
 export function ConfirmDialog({ open, onClose, remindAt, email, category }: Props) {
   const ref = useRef<HTMLDialogElement>(null);
@@ -27,47 +34,66 @@ export function ConfirmDialog({ open, onClose, remindAt, email, category }: Prop
     onClose();
   }
 
-  const formatted = remindAt ? formatKoreanDate(new Date(remindAt)) : '';
+  const formatted = remindAt ? dateFormatter.format(new Date(remindAt)) : '';
 
   return (
     <dialog
       ref={ref}
-      onCancel={(e) => { e.preventDefault(); handleClose(); }}
-      onClick={(e) => { if (e.target === ref.current) handleClose(); }}
+      aria-labelledby="confirm-dialog-title"
+      onCancel={(e) => {
+        e.preventDefault();
+        handleClose();
+      }}
+      onClick={(e) => {
+        if (e.target === ref.current) handleClose();
+      }}
       className="p-0 max-w-[440px] w-[92vw] bg-white"
       style={{
         borderRadius: 'var(--radius-sm)',
         border: '1px solid var(--color-border-on-light)',
         boxShadow: 'var(--elevation-ambient)',
+        overscrollBehavior: 'contain',
       }}
     >
-      <div className="p-8 sm:p-10">
-        <p className="t-tag text-[var(--color-text-secondary)] mb-5 inline-flex items-center gap-2">
-          <span aria-hidden className="block w-1.5 h-1.5 rounded-full bg-[var(--color-brand)]" />
-          Scheduled
-        </p>
+      <div className="p-7 sm:p-10">
+        <div className="flex items-center gap-3 mb-5">
+          <span className="glass-tile glass-tile-brand" style={{ width: 40, height: 40, borderRadius: 12 }}>
+            <CheckIcon size={20} />
+          </span>
+          <span className="t-tag-md text-[var(--color-text-secondary)]">Scheduled</span>
+        </div>
 
-        <h2 className="t-heading-md text-[var(--color-text-primary)] mb-6">
+        <h2
+          id="confirm-dialog-title"
+          className="t-heading-md text-[var(--color-text-primary)] mb-5"
+        >
           알림 예약 완료.
         </h2>
 
         <dl
-          className="p-5 mb-6 space-y-3"
+          className="p-4 sm:p-5 mb-5 sm:mb-6 space-y-3"
           style={{
             border: '1px solid var(--color-border-hairline)',
             borderRadius: 'var(--radius-sm)',
           }}
         >
-          <div className="flex justify-between items-baseline gap-4">
-            <dt className="t-tag text-[var(--color-text-secondary)]">When</dt>
-            <dd className="text-sm font-bold text-[var(--color-text-primary)] text-right">
+          <div className="flex justify-between items-center gap-4 min-w-0">
+            <dt className="inline-flex items-center gap-2 t-tag text-[var(--color-text-secondary)] shrink-0">
+              <ClockIcon size={14} />
+              When
+            </dt>
+            <dd className="text-sm font-bold text-[var(--color-text-primary)] text-right min-w-0 truncate">
               {formatted}
             </dd>
           </div>
-          <div className="flex justify-between items-baseline gap-4">
-            <dt className="t-tag text-[var(--color-text-secondary)]">To</dt>
+          <div className="flex justify-between items-center gap-4 min-w-0">
+            <dt className="inline-flex items-center gap-2 t-tag text-[var(--color-text-secondary)] shrink-0">
+              <MailIcon size={14} />
+              To
+            </dt>
             <dd
-              className="text-[13px] text-[var(--color-text-primary)] truncate text-right"
+              className="text-[13px] text-[var(--color-text-primary)] text-right min-w-0 truncate"
+              translate="no"
               title={email}
             >
               {email}
@@ -75,10 +101,10 @@ export function ConfirmDialog({ open, onClose, remindAt, email, category }: Prop
           </div>
         </dl>
 
-        <p className="text-[var(--color-text-secondary)] text-[15px] leading-[1.6] mb-7">
+        <p className="text-[var(--color-text-secondary)] text-[15px] leading-[1.6] mb-6 sm:mb-7">
           그동안 이 결정은 잊고 지내세요.
           <br />
-          1주일 뒤 그때의 본인이 묻습니다.
+          1주일 뒤, 그때의 당신이 답장을 보냅니다.
         </p>
 
         <button onClick={handleClose} className="btn-primary w-full">
@@ -87,14 +113,4 @@ export function ConfirmDialog({ open, onClose, remindAt, email, category }: Prop
       </div>
     </dialog>
   );
-}
-
-function formatKoreanDate(d: Date): string {
-  const y = d.getFullYear();
-  const m = d.getMonth() + 1;
-  const day = d.getDate();
-  const h = d.getHours();
-  const ampm = h < 12 ? '오전' : '오후';
-  const h12 = h % 12 === 0 ? 12 : h % 12;
-  return `${y}년 ${m}월 ${day}일 ${ampm} ${h12}시`;
 }

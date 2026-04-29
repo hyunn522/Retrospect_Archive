@@ -12,12 +12,14 @@ import { Footer } from './Footer';
 
 export function Landing({ initialCategory }: { initialCategory: Category | null }) {
   useEffect(() => {
-    track('landing_view', initialCategory ? { category: initialCategory } : {});
+    try {
+      track('landing_view', initialCategory ? { category: initialCategory } : {});
+    } catch {}
   }, [initialCategory]);
 
   return (
     <>
-      <main className="min-h-screen bg-white text-zinc-900">
+      <main id="main" className="min-h-screen">
         <Hero />
         <Problem />
         <HowItWorks />

@@ -1,3 +1,5 @@
+import { PlusIcon } from './Icons';
+
 const faqs = [
   {
     q: '1주일 뒤 정확히 언제 알림이 오나요?',
@@ -27,9 +29,9 @@ export function Faq() {
       className="bg-[var(--color-surface-canvas)]"
       style={{ borderTop: '1px solid var(--color-border-hairline)' }}
     >
-      <div className="max-w-[1080px] mx-auto px-6 sm:px-10 py-20 sm:py-[85px] grid md:grid-cols-[260px_1fr] gap-10 md:gap-[60px]">
+      <div className="max-w-[1080px] mx-auto px-5 sm:px-10 py-14 sm:py-[85px] grid md:grid-cols-[260px_1fr] gap-8 md:gap-[60px]">
         <div>
-          <p className="t-tag text-[var(--color-text-secondary)] mb-5">FAQ</p>
+          <p className="t-tag-md text-[var(--color-text-secondary)] mb-4">FAQ</p>
           <h2 className="t-heading-lg text-[var(--color-text-primary)]">
             자주 묻는
             <br />
@@ -41,28 +43,30 @@ export function Faq() {
           {faqs.map((f, i) => (
             <details
               key={i}
-              className="group py-5"
+              className="group py-4 sm:py-5"
               style={{
                 borderTop: i === 0 ? '1px solid var(--color-border-hairline)' : 'none',
                 borderBottom: '1px solid var(--color-border-hairline)',
               }}
             >
-              <summary className="flex items-start justify-between gap-6 cursor-pointer list-none">
-                <span className="text-[1.0625rem] font-bold text-[var(--color-text-primary)] leading-snug">
+              <summary className="flex items-start justify-between gap-5 cursor-pointer list-none">
+                <span className="text-[1rem] sm:text-[1.0625rem] font-bold text-[var(--color-text-primary)] leading-snug">
                   {f.q}
                 </span>
                 <span
                   aria-hidden
-                  className="shrink-0 mt-0.5 w-7 h-7 grid place-items-center text-[var(--color-text-primary)] group-open:bg-[var(--color-surface-inverse)] group-open:text-[var(--color-text-inverse)] group-open:rotate-45 transition-all duration-200"
+                  className="shrink-0 mt-0.5 w-8 h-8 grid place-items-center text-[var(--color-text-primary)] group-open:bg-[var(--color-surface-inverse)] group-open:text-[var(--color-text-inverse)] group-open:rotate-45"
                   style={{
                     border: '1px solid var(--color-border-on-light)',
                     borderRadius: 'var(--radius-pill)',
+                    transition:
+                      'background-color 200ms ease, color 200ms ease, transform 200ms ease',
                   }}
                 >
-                  <span className="text-[15px] leading-none -mt-0.5">+</span>
+                  <PlusIcon size={14} />
                 </span>
               </summary>
-              <p className="mt-4 pr-10 text-[1rem] leading-[1.65] text-[var(--color-text-secondary)]">
+              <p className="mt-3 sm:mt-4 pr-10 text-[0.95rem] sm:text-[1rem] leading-[1.65] text-[var(--color-text-secondary)]">
                 {f.a}
               </p>
             </details>
