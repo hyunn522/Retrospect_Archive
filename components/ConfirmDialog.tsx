@@ -57,7 +57,7 @@ export function ConfirmDialog({ open, onClose, remindAt, email, category }: Prop
     >
       <div className="p-7 sm:p-10">
         <div className="flex items-center gap-3 mb-5">
-          <span className="glass-tile glass-tile-brand" style={{ width: 40, height: 40, borderRadius: 12 }}>
+          <span className="glass-tile" style={{ width: 40, height: 40, borderRadius: 12 }}>
             <CheckIcon size={20} />
           </span>
           <span className="t-tag-md text-[var(--color-text-secondary)]">Scheduled</span>
@@ -102,9 +102,9 @@ export function ConfirmDialog({ open, onClose, remindAt, email, category }: Prop
         </dl>
 
         <p className="text-[var(--color-text-secondary)] text-[15px] leading-[1.6] mb-6 sm:mb-7">
-          그동안 이 결정은 잊고 지내세요.
+          그동안은 이 결정을 잊고 지내세요.
           <br />
-          1주일 뒤, 그때의 당신이 답장을 보냅니다.
+          1주일 뒤, 그때의 맥락과 함께 다시 만나요.
         </p>
 
         <button onClick={handleClose} className="btn-primary w-full">

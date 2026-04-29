@@ -3,7 +3,7 @@ import { ArrowRightIcon, ArrowUpRightIcon, GitHubIcon } from './Icons';
 export function Footer() {
   return (
     <footer className="bg-[var(--color-surface-inverse)] text-[var(--color-text-inverse)]">
-      <div className="max-w-[1080px] mx-auto px-5 sm:px-10 py-12 sm:py-[60px]">
+      <div className="max-w-[1080px] mx-auto px-6 sm:px-10 py-10 sm:py-[60px]">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-7 sm:gap-10">
           <div>
             <p className="t-tag-md mb-4 inline-flex items-center gap-2 text-white/70">
@@ -11,13 +11,14 @@ export function Footer() {
               Retrospect Archive
             </p>
             <p className="t-body-md text-white max-w-[36ch]">
-              결정의 맥락은 금세 흐려져요.
-              <br />한 줄 적어두면, 그때의 마음이 다시 돌아옵니다.
+              결정의 맥락을
+              <br />
+              흘려보내지 마세요.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3">
             <a href="#form" className="btn-primary justify-center">
-              지금 한 줄 남기기
+              한 줄 남기러 가기
               <ArrowRightIcon size={18} />
             </a>
             <a

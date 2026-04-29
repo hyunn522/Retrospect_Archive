@@ -29,7 +29,7 @@ export function Faq() {
       className="bg-[var(--color-surface-canvas)]"
       style={{ borderTop: '1px solid var(--color-border-hairline)' }}
     >
-      <div className="max-w-[1080px] mx-auto px-5 sm:px-10 py-14 sm:py-[85px] grid md:grid-cols-[260px_1fr] gap-8 md:gap-[60px]">
+      <div className="max-w-[1080px] mx-auto px-6 sm:px-10 py-12 sm:py-[85px] grid md:grid-cols-[260px_1fr] gap-7 md:gap-[60px]">
         <div>
           <p className="t-tag-md text-[var(--color-text-secondary)] mb-4">FAQ</p>
           <h2 className="t-heading-lg text-[var(--color-text-primary)]">

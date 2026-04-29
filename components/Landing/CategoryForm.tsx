@@ -69,16 +69,16 @@ export function CategoryForm({ initialCategory }: { initialCategory: Category | 
     >
       <div aria-hidden className="absolute inset-0 -z-10 bg-aurora-soft" />
 
-      <div className="max-w-[1080px] mx-auto px-5 sm:px-10 py-14 sm:py-[85px]">
-        <header className="max-w-[640px] mb-9 sm:mb-14">
+      <div className="max-w-[1080px] mx-auto px-6 sm:px-10 py-12 sm:py-[85px]">
+        <header className="max-w-[640px] mb-8 sm:mb-14">
           <p className="t-tag-md text-[var(--color-text-secondary)] mb-4">Compose</p>
           <h2 className="t-heading-lg text-[var(--color-text-primary)]">
-            지금, 어떤 결정 앞에
+            지금, 어떤 결정
             <br />
-            멈춰 계세요?
+            앞에 멈춰 계세요?
           </h2>
           <p className="t-body-lg mt-4">
-            고민하는 자리를 골라주세요. 그 자리에서 한 줄 적을 수 있어요.
+            고민하는 자리를 골라주세요. 바로 한 줄 적을 수 있어요.
           </p>
         </header>
 
@@ -86,7 +86,7 @@ export function CategoryForm({ initialCategory }: { initialCategory: Category | 
         <div
           role="radiogroup"
           aria-label="결정 카테고리 선택"
-          className="grid sm:grid-cols-3 gap-2.5 sm:gap-4 mb-6"
+          className="grid sm:grid-cols-3 gap-3 sm:gap-4 mb-6"
         >
           {order.map((cat, idx) => {
             const isSelected = selected === cat;

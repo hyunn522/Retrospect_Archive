@@ -26,24 +26,24 @@ export function Problem() {
     <section className="relative bg-[var(--color-surface-canvas)] overflow-hidden">
       <div aria-hidden className="absolute inset-0 -z-10 bg-aurora-soft" />
 
-      <div className="max-w-[1080px] mx-auto px-5 sm:px-10 py-14 sm:py-[85px]">
-        <header className="max-w-[640px] mb-9 sm:mb-[60px]">
+      <div className="max-w-[1080px] mx-auto px-6 sm:px-10 py-12 sm:py-[85px]">
+        <header className="max-w-[640px] mb-8 sm:mb-[60px]">
           <p className="t-tag-md text-[var(--color-text-secondary)] mb-4">The Problem</p>
           <h2 className="t-heading-lg text-[var(--color-text-primary)]">
-            결정한 이유는,
+            결정은 기억해요.
             <br />
-            시간이 지나면 사라져요.
+            근데 왜 그랬는지는?
           </h2>
           <p className="t-body-lg mt-4">
-            결과만 기억나고, 그때의 맥락은 흐려져요. 후회하지 않으려면 지금의 마음을 남겨두세요.
+            결과만 남고, 맥락은 사라져요. 그때의 상황으로 돌아갈 방법이 없으니, 뭘 배워야 할지조차 모른 채 흘러가요.
           </p>
         </header>
 
-        <ul className="grid sm:grid-cols-3 gap-3 sm:gap-5">
+        <ul className="grid sm:grid-cols-3 gap-4 sm:gap-5">
           {cases.map(({ quote, tag, Icon }) => (
             <li
               key={tag}
-              className="relative p-6 sm:p-8 flex flex-col gap-6 sm:gap-7 min-h-[200px] sm:min-h-[240px]"
+              className="relative p-5 sm:p-8 flex flex-col gap-4 sm:gap-7 sm:min-h-[240px]"
               style={{
                 background: 'rgba(255, 255, 255, 0.55)',
                 backdropFilter: 'blur(8px)',

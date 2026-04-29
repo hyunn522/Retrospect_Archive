@@ -81,6 +81,31 @@
   /* Anchor scroll positioning (avoids buried headings) */
   [id] { scroll-margin-top: 24px; }
 
+  /* Mobile: reduce backdrop-filter cost and tap target tweaks */
+  @media (max-width: 640px) {
+    .glass-tile,
+    .glass-tile-sm,
+    .glass-tile-lg {
+      -webkit-backdrop-filter: blur(8px) saturate(130%);
+              backdrop-filter: blur(8px) saturate(130%);
+    }
+    button,
+    [role="button"],
+    a.btn-primary,
+    a.btn-ghost {
+      min-height: 44px;
+    }
+    .btn-primary,
+    .btn-ghost {
+      padding: 13px 22px;
+      font-size: 1rem;
+    }
+  }
+
+  /* Hide scrollbar (cross-browser) — for horizontal swipe rails */
+  .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+
   /* Honor reduced motion globally */
   @media (prefers-reduced-motion: reduce) {
     *,
@@ -99,23 +124,23 @@
   /* === Typography scale (DESIGN.md, tightened so display→tag stays smooth) === */
   .t-display-lg {
     font-family: var(--font-display);
-    font-size: clamp(2rem, 3.5vw + 0.8rem, 3.25rem);
-    font-weight: 700;
-    line-height: 1.14;
-    text-wrap: balance;
-  }
-  .t-display-md {
-    font-family: var(--font-display);
-    font-size: clamp(1.75rem, 2.6vw + 0.6rem, 2.625rem);
+    font-size: clamp(1.75rem, 3.2vw + 0.65rem, 3.25rem);
     font-weight: 700;
     line-height: 1.18;
     text-wrap: balance;
   }
-  .t-heading-lg {
+  .t-display-md {
     font-family: var(--font-display);
-    font-size: clamp(1.5rem, 1.6vw + 0.6rem, 2.125rem);
+    font-size: clamp(1.625rem, 2.4vw + 0.55rem, 2.625rem);
     font-weight: 700;
     line-height: 1.22;
+    text-wrap: balance;
+  }
+  .t-heading-lg {
+    font-family: var(--font-display);
+    font-size: clamp(1.375rem, 1.4vw + 0.55rem, 2.125rem);
+    font-weight: 700;
+    line-height: 1.26;
     text-wrap: balance;
   }
   .t-heading-md {
@@ -167,16 +192,16 @@
   }
   .t-caption-md {
     font-family: var(--font-sans);
-    font-size: 0.8125rem;
+    font-size: 0.875rem;
     font-weight: 400;
     line-height: 1.55;
     color: var(--color-text-secondary);
   }
   .t-caption-sm {
     font-family: var(--font-sans);
-    font-size: 0.6875rem;
+    font-size: 0.8125rem;
     font-weight: 400;
-    line-height: 1.4;
+    line-height: 1.5;
     color: var(--color-text-secondary);
   }
 
@@ -223,25 +248,34 @@
     font-size: 1.0625rem;
     font-weight: 700;
     line-height: 1;
-    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
-    transition: filter 150ms ease, transform 150ms ease,
-                box-shadow 150ms ease;
+    cursor: pointer;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06),
+                0 6px 12px -6px rgba(7, 181, 59, 0.30);
+    transition: filter 180ms ease, transform 180ms ease,
+                box-shadow 180ms ease, background-color 180ms ease;
   }
+  .btn-primary > svg { transition: transform 180ms ease; }
   .btn-primary:hover:not(:disabled) {
-    filter: brightness(0.93);
-    transform: translateY(-1px);
-    box-shadow: 0 10px 22px -10px rgba(7, 181, 59, 0.55),
-                0 1px 0 rgba(0, 0, 0, 0.06);
+    background-color: #08c842;
+    filter: brightness(1.02);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px -10px rgba(7, 181, 59, 0.55),
+                0 2px 0 rgba(0, 0, 0, 0.06);
+  }
+  .btn-primary:hover:not(:disabled) > svg:last-child {
+    transform: translateX(2px);
   }
   .btn-primary:active:not(:disabled) {
     transform: translateY(0);
-    filter: brightness(0.88);
+    filter: brightness(0.92);
+    box-shadow: 0 4px 8px -4px rgba(7, 181, 59, 0.4);
   }
   .btn-primary:disabled {
     background: var(--color-border-on-light);
     border-color: transparent;
     color: rgba(255, 255, 255, 0.85);
     cursor: not-allowed;
+    box-shadow: none;
   }
 
   .btn-ghost {
@@ -258,16 +292,23 @@
     font-size: 1.0625rem;
     font-weight: 700;
     line-height: 1;
-    transition: background-color 150ms ease, color 150ms ease,
-                border-color 150ms ease, transform 150ms ease;
+    cursor: pointer;
+    transition: background-color 180ms ease, color 180ms ease,
+                border-color 180ms ease, transform 180ms ease,
+                box-shadow 180ms ease;
   }
   .btn-ghost:hover {
     color: var(--color-text-primary);
     border-color: var(--color-text-primary);
-    background-color: rgba(30, 30, 30, 0.04);
-    transform: translateY(-1px);
+    background-color: rgba(30, 30, 30, 0.05);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.18);
   }
-  .btn-ghost:active { transform: translateY(0); }
+  .btn-ghost:active {
+    transform: translateY(0);
+    background-color: rgba(30, 30, 30, 0.08);
+    box-shadow: 0 4px 8px -4px rgba(0, 0, 0, 0.15);
+  }
 
   /* === Form fields with hover/focus === */
   .field {
