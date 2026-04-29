@@ -2,7 +2,7 @@ import type { LandingContent } from '@/content/types';
 
 export const life: LandingContent = {
   category: 'life',
-  accent: '#1e3a8a',
+  accent: '#07b53b',
   hookLine: '그때 왜 그 결정을 내렸지?',
   subline:
     '이직, 자취, 큰 소비, 진로.\n결정의 맥락은 사라지고 결과만 남죠. 1주일 뒤 회고 알림이 갑니다.',

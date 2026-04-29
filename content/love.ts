@@ -2,7 +2,7 @@ import type { LandingContent } from '@/content/types';
 
 export const love: LandingContent = {
   category: 'love',
-  accent: '#ec4899',
+  accent: '#07b53b',
   hookLine: '왜 그때 그렇게 결정했어요?',
   subline:
     '관계의 결정은 시간이 지나면 마음이 흐려져요.\n그때 마음을 한 줄 적어두면, 1주일 뒤 다시 만나요.',

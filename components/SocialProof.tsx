@@ -18,10 +18,13 @@ export function SocialProof({ content }: { content: LandingContent }) {
   if (count === null || count === 0) return null;
 
   return (
-    <p className="text-sm text-zinc-500 text-center">
-      {content.socialProofPrefix}
-      <span className="font-medium text-zinc-700">{count}</span>
-      명이 결정을 기록했어요.
+    <p className="flex items-center justify-center gap-2.5 t-caption-md">
+      <span aria-hidden className="block w-1.5 h-1.5 rounded-full bg-[var(--color-brand)]" />
+      <span>
+        {content.socialProofPrefix}
+        <span className="tnum text-[var(--color-text-primary)] font-bold mx-1">{count}</span>
+        명이 결정을 기록했어요.
+      </span>
     </p>
   );
 }

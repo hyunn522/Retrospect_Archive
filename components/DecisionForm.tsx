@@ -57,24 +57,36 @@ export function DecisionForm({ content, onSuccess }: Props) {
     }
   }
 
+  const fieldStyle: React.CSSProperties = {
+    border: '1px solid var(--color-border-on-light)',
+    borderRadius: 'var(--radius-sm)',
+  };
+
   return (
-    <form onSubmit={onSubmit} className="w-full max-w-[480px] mx-auto flex flex-col gap-4">
-      <label className="flex flex-col gap-1.5">
-        <span className="text-sm font-medium text-zinc-700">이메일</span>
+    <form onSubmit={onSubmit} className="w-full max-w-[480px] mx-auto flex flex-col gap-5">
+      <div className="flex flex-col gap-2">
+        <label htmlFor="email" className="t-tag text-[var(--color-text-secondary)]">
+          Email
+        </label>
         <input
+          id="email"
           type="email"
           required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           onFocus={() => track('form_focus', { category: content.category })}
           placeholder="you@example.com"
-          className="rounded-md border border-zinc-300 px-3 py-2.5 outline-none focus:border-zinc-900"
+          className="w-full px-4 h-12 text-[15px] text-[var(--color-text-primary)] placeholder:text-[var(--color-text-secondary)]/60 outline-none bg-white"
+          style={fieldStyle}
         />
-      </label>
+      </div>
 
-      <label className="flex flex-col gap-1.5">
-        <span className="text-sm font-medium text-zinc-700">지금 망설이는 결정 한 줄</span>
+      <div className="flex flex-col gap-2">
+        <label htmlFor="decision" className="t-tag text-[var(--color-text-secondary)]">
+          Decision
+        </label>
         <textarea
+          id="decision"
           required
           value={decision}
           onChange={(e) => setDecision(e.target.value)}
@@ -82,28 +94,47 @@ export function DecisionForm({ content, onSuccess }: Props) {
           placeholder={content.placeholder}
           rows={5}
           maxLength={500}
-          className="rounded-md border border-zinc-300 px-3 py-2.5 outline-none focus:border-zinc-900 resize-none"
+          className="w-full px-4 py-3 text-[15px] leading-[1.55] text-[var(--color-text-primary)] placeholder:text-[var(--color-text-secondary)]/60 outline-none resize-none bg-white"
+          style={fieldStyle}
         />
-        <span className="text-xs text-zinc-500 self-end">
-          {decisionLength}/500 (최소 10자)
+        <span className="self-end t-caption-sm tnum">
+          {decisionLength}/500 · 최소 10
         </span>
-      </label>
+      </div>
 
       {error && (
-        <div role="alert" className="text-sm text-red-600">{error}</div>
+        <div
+          role="alert"
+          className="px-4 py-3 text-sm text-[var(--color-text-primary)]"
+          style={{
+            background: '#fff',
+            border: '1px solid var(--color-text-primary)',
+            borderRadius: 'var(--radius-sm)',
+          }}
+        >
+          {error}
+        </div>
       )}
 
-      <button
-        type="submit"
-        disabled={!canSubmit}
-        style={{ backgroundColor: canSubmit ? content.accent : undefined }}
-        className="rounded-md px-4 py-3 text-white font-medium disabled:bg-zinc-300 disabled:cursor-not-allowed transition-opacity"
-      >
-        {submitting ? '보내는 중...' : content.ctaButton}
+      <button type="submit" disabled={!canSubmit} className="btn-primary w-full mt-1">
+        {submitting ? (
+          <>
+            <span
+              aria-hidden
+              className="block w-3.5 h-3.5 rounded-full border-2 border-white/40 border-t-white animate-spin"
+            />
+            보내는 중
+          </>
+        ) : (
+          <>
+            {content.ctaButton}
+            <span aria-hidden>→</span>
+          </>
+        )}
       </button>
 
-      <p className="text-xs text-zinc-500 text-center">
-        1주일 뒤 입력한 이메일로 알림이 갑니다.
+      <p className="text-center t-caption-sm">
+        7일 뒤 한국 시간 오전 9시에 메일 1통이 도착합니다.
       </p>
     </form>
   );

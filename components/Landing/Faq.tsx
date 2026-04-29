@@ -23,30 +23,48 @@ const faqs = [
 
 export function Faq() {
   return (
-    <section className="px-6 py-20 sm:py-28 bg-zinc-50 border-t border-zinc-100">
-      <div className="max-w-2xl mx-auto">
-        <div className="text-center mb-10 sm:mb-12">
-          <p className="text-xs sm:text-sm font-medium text-zinc-500 mb-3 tracking-[0.2em] uppercase">
-            FAQ
-          </p>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">
-            자주 묻는 질문
+    <section
+      className="bg-[var(--color-surface-canvas)]"
+      style={{ borderTop: '1px solid var(--color-border-hairline)' }}
+    >
+      <div className="max-w-[1080px] mx-auto px-6 sm:px-10 py-20 sm:py-[85px] grid md:grid-cols-[260px_1fr] gap-10 md:gap-[60px]">
+        <div>
+          <p className="t-tag text-[var(--color-text-secondary)] mb-5">FAQ</p>
+          <h2 className="t-heading-lg text-[var(--color-text-primary)]">
+            자주 묻는
+            <br />
+            질문
           </h2>
         </div>
 
-        <div className="divide-y divide-zinc-200 border-y border-zinc-200 bg-white rounded-2xl px-6 sm:px-8">
+        <div>
           {faqs.map((f, i) => (
-            <details key={i} className="group py-5">
-              <summary className="flex justify-between items-start gap-4 cursor-pointer list-none font-medium text-zinc-900">
-                <span className="leading-snug">{f.q}</span>
+            <details
+              key={i}
+              className="group py-5"
+              style={{
+                borderTop: i === 0 ? '1px solid var(--color-border-hairline)' : 'none',
+                borderBottom: '1px solid var(--color-border-hairline)',
+              }}
+            >
+              <summary className="flex items-start justify-between gap-6 cursor-pointer list-none">
+                <span className="text-[1.0625rem] font-bold text-[var(--color-text-primary)] leading-snug">
+                  {f.q}
+                </span>
                 <span
                   aria-hidden
-                  className="shrink-0 text-zinc-400 group-open:rotate-45 transition-transform text-2xl leading-none mt-[-2px]"
+                  className="shrink-0 mt-0.5 w-7 h-7 grid place-items-center text-[var(--color-text-primary)] group-open:bg-[var(--color-surface-inverse)] group-open:text-[var(--color-text-inverse)] group-open:rotate-45 transition-all duration-200"
+                  style={{
+                    border: '1px solid var(--color-border-on-light)',
+                    borderRadius: 'var(--radius-pill)',
+                  }}
                 >
-                  +
+                  <span className="text-[15px] leading-none -mt-0.5">+</span>
                 </span>
               </summary>
-              <p className="mt-3 text-zinc-600 leading-relaxed">{f.a}</p>
+              <p className="mt-4 pr-10 text-[1rem] leading-[1.65] text-[var(--color-text-secondary)]">
+                {f.a}
+              </p>
             </details>
           ))}
         </div>
