@@ -43,14 +43,7 @@ export function Problem() {
           {cases.map(({ quote, tag, Icon }) => (
             <li
               key={tag}
-              className="relative p-5 sm:p-8 flex flex-col gap-4 sm:gap-7 sm:min-h-[240px]"
-              style={{
-                background: 'rgba(255, 255, 255, 0.55)',
-                backdropFilter: 'blur(8px)',
-                WebkitBackdropFilter: 'blur(8px)',
-                border: '1px solid var(--color-border-on-light)',
-                borderRadius: 'var(--radius-sm)',
-              }}
+              className="glass-card relative p-5 sm:p-8 flex flex-col gap-4 sm:gap-7 sm:min-h-[240px]"
             >
               <div className="flex items-center justify-between">
                 <span className="glass-tile glass-tile-sm">

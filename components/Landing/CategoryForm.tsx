@@ -106,23 +106,24 @@ export function CategoryForm({ initialCategory }: { initialCategory: Category | 
                 className="card-pickable group text-left p-4 sm:p-6"
                 style={{
                   background: isSelected
-                    ? 'var(--color-surface-inverse)'
-                    : 'rgba(255, 255, 255, 0.6)',
-                  color: isSelected
-                    ? 'var(--color-text-inverse)'
-                    : 'var(--color-text-primary)',
+                    ? 'linear-gradient(135deg, rgba(7, 181, 59, 0.18), rgba(7, 181, 59, 0.08))'
+                    : 'var(--glass-tint-1)',
+                  color: 'var(--color-text-primary)',
                   border: isSelected
-                    ? '1px solid var(--color-surface-inverse)'
+                    ? '1px solid rgba(7, 181, 59, 0.45)'
                     : '1px solid var(--color-border-on-light)',
-                  borderRadius: 'var(--radius-sm)',
-                  backdropFilter: 'blur(10px)',
-                  WebkitBackdropFilter: 'blur(10px)',
+                  borderRadius: 'var(--radius-md)',
+                  backdropFilter: 'blur(14px) saturate(140%)',
+                  WebkitBackdropFilter: 'blur(14px) saturate(140%)',
+                  boxShadow: isSelected
+                    ? 'inset 0 1px 0 var(--glass-inner-highlight), 0 10px 24px -12px rgba(7, 181, 59, 0.30)'
+                    : 'inset 0 1px 0 var(--glass-inner-highlight)',
                 }}
               >
                 <div className="flex items-center justify-between mb-5 sm:mb-7">
                   <span
                     className={
-                      isSelected ? 'glass-tile glass-tile-on-dark' : 'glass-tile'
+                      isSelected ? 'glass-tile glass-tile-brand' : 'glass-tile'
                     }
                     style={{ width: 44, height: 44, borderRadius: 12 }}
                   >
@@ -132,7 +133,7 @@ export function CategoryForm({ initialCategory }: { initialCategory: Category | 
                     className="t-tag-md"
                     style={{
                       color: isSelected
-                        ? 'rgba(255,255,255,0.8)'
+                        ? 'var(--color-brand)'
                         : 'var(--color-text-secondary)',
                     }}
                   >
@@ -142,11 +143,7 @@ export function CategoryForm({ initialCategory }: { initialCategory: Category | 
                 <div className="t-heading-xs mb-1.5">{title}</div>
                 <div
                   className="text-[0.95rem] leading-snug"
-                  style={{
-                    color: isSelected
-                      ? 'rgba(255,255,255,0.7)'
-                      : 'var(--color-text-secondary)',
-                  }}
+                  style={{ color: 'var(--color-text-secondary)' }}
                 >
                   {teaser}
                 </div>
@@ -157,14 +154,7 @@ export function CategoryForm({ initialCategory }: { initialCategory: Category | 
 
         {/* Form panel */}
         {content ? (
-          <div
-            className="relative bg-[var(--color-surface-canvas)] p-5 sm:p-10 mt-7 sm:mt-8 overflow-hidden"
-            style={{
-              borderRadius: 'var(--radius-sm)',
-              border: '1px solid var(--color-border-hairline)',
-              boxShadow: 'var(--elevation-ambient)',
-            }}
-          >
+          <div className="glass-card relative p-5 sm:p-10 mt-7 sm:mt-8 overflow-hidden">
             <div
               aria-hidden
               className="absolute -top-12 -right-12 w-[280px] h-[280px] rounded-full -z-0"

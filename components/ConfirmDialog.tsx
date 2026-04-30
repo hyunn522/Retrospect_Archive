@@ -47,11 +47,10 @@ export function ConfirmDialog({ open, onClose, remindAt, email, category }: Prop
       onClick={(e) => {
         if (e.target === ref.current) handleClose();
       }}
-      className="p-0 max-w-[440px] w-[92vw] bg-white"
+      className="glass-card p-0 max-w-[440px] w-[92vw]"
       style={{
-        borderRadius: 'var(--radius-sm)',
-        border: '1px solid var(--color-border-on-light)',
-        boxShadow: 'var(--elevation-ambient)',
+        background:
+          'linear-gradient(160deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.78)) padding-box, var(--glass-border-grad) border-box',
         overscrollBehavior: 'contain',
       }}
     >

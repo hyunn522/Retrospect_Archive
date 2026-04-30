@@ -147,9 +147,12 @@ export function DecisionForm({ content, onSuccess }: Props) {
           tabIndex={-1}
           className="px-4 py-3 text-sm text-[var(--color-text-primary)] outline-none"
           style={{
-            background: '#fff',
-            border: '1px solid var(--color-text-primary)',
+            background: 'var(--glass-tint-1)',
+            border: '1px solid var(--color-border-on-light)',
             borderRadius: 'var(--radius-sm)',
+            backdropFilter: 'blur(10px) saturate(130%)',
+            WebkitBackdropFilter: 'blur(10px) saturate(130%)',
+            boxShadow: 'inset 0 1px 0 var(--glass-inner-highlight)',
           }}
         >
           {error}

@@ -14,12 +14,12 @@ export function Hero() {
           <span
             className="t-tag-lg inline-flex items-center gap-2.5 px-4 py-2 rounded-full text-[var(--color-text-primary)]"
             style={{
-              background: 'rgba(255, 255, 255, 0.65)',
+              background: 'var(--glass-tint-1)',
               border: '1px solid rgba(255, 255, 255, 0.7)',
-              backdropFilter: 'blur(10px) saturate(140%)',
-              WebkitBackdropFilter: 'blur(10px) saturate(140%)',
+              backdropFilter: 'blur(14px) saturate(140%)',
+              WebkitBackdropFilter: 'blur(14px) saturate(140%)',
               boxShadow:
-                'inset 0 1px 0 rgba(255,255,255,0.6), 0 1px 2px rgba(0,0,0,0.04)',
+                'inset 0 1px 0 var(--glass-inner-highlight), 0 6px 16px -8px rgba(0,0,0,0.10)',
             }}
           >
             <span aria-hidden className="block w-2 h-2 rounded-full bg-[var(--color-brand)]" />
