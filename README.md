@@ -1,6 +1,6 @@
 # 회고 아카이브
 
-3-ICP 의사결정 회고 페인 강도 검증용 페이크도어 랜딩 페이지 (서비스명: 회고 아카이브)
+3-ICP 의사결정 회고 페인 강도 검증용 페이크도어 랜딩 페이지
 
 ## 라우트
 
@@ -21,10 +21,10 @@ npm run dev
 
 ## 외부 서비스 셋업
 
-1. **Supabase**: 새 프로젝트 → SQL Editor에서 `supabase/schema.sql` 실행 → URL/anon/service role 키 복사
-2. **Resend**: 계정 생성 → API 키 발급 (무료 도메인 `onboarding@resend.dev` 사용)
-3. **PostHog**: 프로젝트 생성 → API 키 + Host 복사
-4. **Cron Secret**: 임의 문자열 (예: `openssl rand -hex 32`)
+1. **Supabase** (DB): `submissions` 테이블에 결정/이메일/리마인드 일정 저장. 새 프로젝트 → SQL Editor에서 `supabase/schema.sql` 실행 → URL/anon/service role 키 복사
+2. **Resend** (메일): 1주일 뒤 회고 리마인더 발송. 계정 생성 → API 키 발급 (무료 도메인 `onboarding@resend.dev` 사용)
+3. **PostHog** (이벤트 분석): 랜딩 뷰 → 카테고리 선택 → 제출 깔때기 추적. 프로젝트 생성 → API 키 + Host 복사
+4. **Vercel** (호스팅 + 크론 + 페이지 애널리틱스): 매일 자정 `/api/cron/remind` 트리거. **Cron Secret**은 임의 문자열로 (예: `openssl rand -hex 32`)
 
 ## 배포 (Vercel)
 
